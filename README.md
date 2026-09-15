@@ -4,6 +4,17 @@ A browser-based roguelike deckbuilder centered on tactical minion combat. Defeat
 
 以随从交互为核心的八关网页卡牌肉鸽。无需账号，无需安装游戏客户端。
 
+## 在线游玩
+
+**[点击开始远征 / Play Ember Expedition](https://ember-expedition-5jwyc6.v2.appdeploy.ai/)**
+
+用电脑或手机浏览器打开即可。当前网站由 AppDeploy 托管，直接显示完整游戏，不需要下载 HTML。
+
+- AppDeploy 应用 ID：`ember-expedition-5jwyc6`。
+- 当前发布的游戏源码提交：[`fd8f212`](https://github.com/CLRedfield/ember-expedition/commit/fd8f21270d5882810ce91b69ca628963e0461514)。
+- 发布时下载并校验固定提交中的源文件，随后将其作为网站自身的静态文件提供。游玩时不需要从 GitHub 加载代码。
+- 此次发布是固定版本快照，**尚未配置 GitHub push 后自动重新部署**。后续修改游戏源码后，需要更新 AppDeploy 发布版本；仅修改本 README 不改变在线游戏。
+
 ## 游戏内容
 
 - 3 种起始职业：铁誓守卫、林契行者、星祷术师。
@@ -41,6 +52,10 @@ node tests/rules.test.cjs
 ```
 
 35 项规则测试覆盖随从交战、关键词、位置光环、费用与场面限制、全部卡牌、八关奖励、营地、重试与存档。自动化测试不等于所有浏览器和所有操作下的零缺陷保证。
+
+本次发布前重新运行了全部 35 项规则测试并通过。对相同游戏源文件的本地 Chromium 交互检查覆盖了八关奖励、出牌、攻击、营地和响应式布局，没有记录到 JavaScript 异常。本地浏览器存储检查使用受控 Storage 适配器，不等同于所有真实浏览器的原生存储兼容性验证。
+
+AppDeploy 最终状态为 `ready`，部署检查未报告前端或网络错误。部署状态返回的 `e2e_tests` 字段为空，因此不将已提交的五组线上验收方案记作全部执行通过。
 
 ## 结构
 
